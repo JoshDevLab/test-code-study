@@ -47,4 +47,28 @@ public class CalculationRequestTest {
             new CalculationRequest(parts);
         });
     }
+
+    @Test
+    public void 유효하지_않는_연산자가_들어오면() {
+        //given
+        String[] parts = new String[]{"232", "X", "1212"};
+
+        //when
+        //then
+        Assert.assertThrows(InvalidOperatorException.class, () -> {
+            new CalculationRequest(parts);
+        });
+    }
+
+    @Test
+    public void 유효하지_않는_길이의_연산자가_들어오면() {
+        //given
+        String[] parts = new String[]{"232", "X-", "1212"};
+
+        //when
+        //then
+        Assert.assertThrows(InvalidOperatorException.class, () -> {
+            new CalculationRequest(parts);
+        });
+    }
 }
